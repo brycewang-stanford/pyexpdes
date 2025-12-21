@@ -1,5 +1,10 @@
-setwd("~/R commands/Book/Ch4")
+# setwd("~/R commands/Book/Ch4")
 rm(list=ls())
+install.packages(c('minimaxdesign','mined','deldir','plotrix','LHD','SFDesign','LatticeDesign','MaxPro','car','fitdistrplus','fields','maximin','zipcodeR','cubature','adaptMCMC','lhs','SLHD'))
+install.packages(c('AlgDesign'), repos='https://cloud.r-project.org')
+install.packages(c('minimaxdesign'), repos='https://cloud.r-project.org')
+install.packages("https://cran.r-project.org/src/contrib/Archive/minimaxdesign/minimaxdesign_0.1.5.tar.gz")
+install.packages(c('DiceDesign', 'doParallel', 'doSNOW', 'jpeg', 'gmp', 'conf.design', 'DoE.base', 'FrF2'))
 library(FNN)
 library(minimaxdesign)
 library(mined)
@@ -8,6 +13,7 @@ library(MASS)
 library(plotrix)
 library(LHD)
 library(SFDesign)
+
 #cluster designs
 ######################
 p=2

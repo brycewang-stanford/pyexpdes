@@ -1,4 +1,6 @@
 #different objectives of experiment
+
+
 par(mar=c(5,5,4,2))
 par(mfrow=c(2,2))
 x=seq(0,1,length=301)
@@ -23,7 +25,7 @@ points(cbind(D,min(y)-.05),pch=16,cex=2,lwd=3,col="blue")
 
 
 
-#library(support)
+library(support)
 y=2/3*dbeta(x,2,10)+1/3*dbeta(x,10,2)
 plot(x,y,type="l",axes=FALSE,xlab="",ylab="",lwd=3,col=1,ylim=c(min(y)-.05,max(y)),main="uncertainty propagation",cex.main=3)
 x=rbeta(1000*n1,2,10)
@@ -45,6 +47,7 @@ f=function(x){
 f=function(x) sin(10*pi*x)/(1+64*(x-.25)^2)+x^2
 
 y=f(x)+.1*rnorm(n)
+
 
 par(mfrow=c(1,2))
 l=-.1

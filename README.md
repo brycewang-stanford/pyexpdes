@@ -1,13 +1,12 @@
 # pyexpdes
 
 Python-first reimplementation of selected examples from _Experimental Design for Data Science and Engineering_
-by V. Roshan Joseph, with **book-faithful figure settings** and **minimal R usage**.
+by V. Roshan Joseph
 
 ## What this repo is trying to achieve
 
 - **Source code** is shipped as Python modules (one per original R file).
 - **Plots are generated from notebooks** (one notebook per original R file).
-- **R is used only when necessary** to match the book outputs (via small CSV-based wrappers).
 
 ## Project structure
 
@@ -24,7 +23,7 @@ pyexpdes/
     ├── ch4.py                 # Python port of ch4.R (Python-first + optional small R wrappers)
     ├── modeling.py            # Python port of modeling.R (R wrappers only where required)
     ├── r_utils.py             # Minimal R wrapper runner (CSV handoff)
-    ├── r_wrappers/            # Small R scripts called from Python
+    ├── r_wrappers/            # R scripts called from Python
     ├── figures/               # Output figures (generated)
     └── notebooks/             # Jupyter notebooks that call the Python modules
         ├── introduction.ipynb

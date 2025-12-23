@@ -33,16 +33,7 @@ pyexpdes/
         └── modeling.ipynb
 ```
 
-## Important note: `minimaxdesign` is excluded
-
-The R package **`minimaxdesign` is intentionally not used** due to package conflicts (as discussed).
-Any code paths that would depend on `minimaxdesign` are omitted, and this is documented in the Chapter 4 notebook/module.
-
-## Important note: `zipcodeR` is excluded
-
-The R package **`zipcodeR` is intentionally not used** (dataset/package availability varies and it is not required for the core chapter concepts).
-This means the **"Minimum energy designs" example that pulls `zip_code_db` cannot be reproduced exactly** from the book without an equivalent dataset.
-All other Chapter 4 sections are implemented Python-first, using small CSV-based R wrappers only where the book relies on specialized R algorithms.
+## note: `minimaxdesign`, `zipcodeR` is excluded
 
 ## How to run (recommended)
 

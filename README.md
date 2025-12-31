@@ -33,8 +33,8 @@ pyexpdes/
 └── python/
     ├── ch1.py                 # Python port of Ch1.R (Introduction)
     ├── ch2.py                 # Python port of Ch2.R (Modeling)
-    ├── ch3.py                 # Python port of ch3.R (pure Python)
-    ├── ch4.py                 # Python port of ch4.R
+    ├── ch3.py                 # Python port of ch3.R (Model-based Designs)
+    ├── ch4.py                 # Python port of ch4.R (Space-Filling Designs)
     ├── ch5.py                 # Python port of Ch5.R (Representative Points)
     ├── ch6.py                 # Python port of Ch6.R (Screening Designs)
     ├── ch7.py                 # Python port of Ch7.R (Sequential Designs)

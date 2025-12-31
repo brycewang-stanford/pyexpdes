@@ -13,3 +13,7 @@ def figures_dir(module: str) -> Path:
     return d
 
 
+def datasets_dir() -> Path:
+    return REPO_ROOT / "datasets"
+
+

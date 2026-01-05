@@ -260,8 +260,8 @@ def generate_figures(*, use_r: bool = True) -> tuple[Path, list[Path]]:
         d2_mp = design_metrics[design_metrics["design"] == "D2"]["maxpro"].values[0]
         ax.axvline(d1_mp, color="red", linewidth=3, linestyle=":")
         ax.axvline(d2_mp, color="green", linewidth=3, linestyle="--")
-        ax.text(d1_mp, kde(d1_mp) * 0.8, r"$D_1$", fontsize=14)
-        ax.text(d2_mp, kde(d2_mp) * 0.8, r"$D_2$", fontsize=14)
+        ax.text(d1_mp, kde([d1_mp])[0] * 0.8, r"$D_1$", fontsize=14)
+        ax.text(d2_mp, kde([d2_mp])[0] * 0.8, r"$D_2$", fontsize=14)
 
         ax.set_xlabel("MaxPro measure", fontsize=14)
         ax.set_ylabel("density", fontsize=14)
@@ -282,8 +282,8 @@ def generate_figures(*, use_r: bool = True) -> tuple[Path, list[Path]]:
         d2_en = design_metrics[design_metrics["design"] == "D2"]["energy"].values[0]
         ax.axvline(d1_en, color="red", linewidth=3, linestyle=":")
         ax.axvline(d2_en, color="green", linewidth=3, linestyle="--")
-        ax.text(d1_en, kde(d1_en) * 0.8, r"$D_1$", fontsize=14)
-        ax.text(d2_en, kde(d2_en) * 0.8, r"$D_2$", fontsize=14)
+        ax.text(d1_en, kde([d1_en])[0] * 0.8, r"$D_1$", fontsize=14)
+        ax.text(d2_en, kde([d2_en])[0] * 0.8, r"$D_2$", fontsize=14)
 
         ax.set_xlabel("energy distance", fontsize=14)
         ax.set_ylabel("density", fontsize=14)

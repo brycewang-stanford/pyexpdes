@@ -15,6 +15,7 @@ from typing import Sequence
 
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.integrate import trapezoid
 from scipy.linalg import cholesky, solve_triangular
 from scipy.optimize import minimize
 
@@ -59,7 +60,7 @@ def _imse(D: np.ndarray, theta: float) -> float:
     # Use simple dense trapezoid for determinism.
     grid = np.linspace(0.0, 1.0, 2001)
     vals = np.array([s2(float(g)) for g in grid])
-    return float(np.trapz(vals, grid))
+    return float(trapezoid(vals, grid))
 
 
 def _mmse(D: np.ndarray, theta: float) -> float:
@@ -101,7 +102,7 @@ def _save(fig: plt.Figure, path: Path) -> Path:
     return path
 
 
-def generate_figures() -> tuple[Path, list[Path]]:
+def generate_figures(*, use_r: bool = True) -> tuple[Path, list[Path]]:
     apply_base_style()
     out_dir = figures_dir("ch03")
     paths: list[Path] = []

@@ -73,5 +73,5 @@ jupyter lab notebooks/ch1.ipynb
 
 ## Notes
 
-- minimaxdesign, zipcodeR excluded due to package conflicts
+- zipcodeR excluded due to package conflicts
 - Ch5 PQMC section (Figure 5.9) excluded due to external dependency

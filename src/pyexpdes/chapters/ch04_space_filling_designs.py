@@ -1,14 +1,5 @@
 """
-Python port of `R files/ch4.R` (Python-first, optional small R wrappers).
-
-Important:
-- The R package `minimaxdesign` is intentionally NOT used due to package conflicts.
-  Any steps depending on `minimaxdesign::minimax()` are omitted.
-
-This module aims to reproduce chapter 4 figures with a Python-first approach:
-- Plotting is done in Python (matplotlib).
-- When the book relies on specialized R-only design algorithms, we invoke small R wrappers
-  via CSV handoff to obtain design points / parameters and then render plots in Python.
+Python port of `R files/ch4.R` - Space-Filling Designs.
 """
 
 from __future__ import annotations
@@ -28,10 +19,7 @@ from pyexpdes.core.style import apply_base_style
 from pyexpdes.core.r_utils import run_wrapper
 
 
-MINIMAXDESIGN_EXCLUDED_NOTE = (
-    "Note: minimaxdesign is excluded due to package conflicts; "
-    "minimax optimization overlay is omitted."
-)
+
 
 
 def _save(fig: plt.Figure, path: Path) -> Path:
@@ -211,7 +199,7 @@ def generate_figures(*, use_r: bool = True) -> tuple[Path, list[Path]]:
     paths.append(_save(fig, out_dir / "clustering_based.png"))
 
     # ------------------------------------------------------------------
-    # Minimax design (theoretical points only; no minimaxdesign overlay)
+    # Minimax design (theoretical + optimized via minimaxdesign)
     # ------------------------------------------------------------------
     DmM = np.array(
         [
@@ -226,8 +214,23 @@ def generate_figures(*, use_r: bool = True) -> tuple[Path, list[Path]]:
     )
     r = 1 / 6 * (np.sqrt(7) - 1)
 
+    D_opt = None
+    if use_r:
+        try:
+            out = run_wrapper(
+                "ch4_minimax.R",
+                inputs={"params.csv": pd.DataFrame({"n": [7], "p": [2], "q": [10], "seed": [2]})},
+                args=[],
+                required_packages=["minimaxdesign"],
+            )
+            D_opt = out["minimax_design.csv"].to_numpy()
+        except Exception:
+            pass
+
     fig, ax = plt.subplots(figsize=(6, 6))
     ax.scatter(DmM[:, 0], DmM[:, 1], s=150, color="blue", zorder=5)
+    if D_opt is not None:
+        ax.scatter(D_opt[:, 0], D_opt[:, 1], s=100, marker="^", color="green", zorder=6)
     for (x0, y0) in DmM:
         ax.add_artist(plt.Circle((x0, y0), r, fill=False, color="gray", linewidth=2))
     ax.set_xlim(0, 1)
@@ -236,7 +239,6 @@ def generate_figures(*, use_r: bool = True) -> tuple[Path, list[Path]]:
     ax.set_title("minimax design", fontsize=16)
     ax.set_xlabel(r"$x_1$", fontsize=14)
     ax.set_ylabel(r"$x_2$", fontsize=14)
-    ax.text(0.02, -0.08, MINIMAXDESIGN_EXCLUDED_NOTE, transform=ax.transAxes, fontsize=9)
     fig.tight_layout()
     paths.append(_save(fig, out_dir / "minimax.png"))
 

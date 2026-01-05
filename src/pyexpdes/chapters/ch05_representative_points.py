@@ -355,12 +355,12 @@ def generate_figures(*, use_r: bool = True) -> tuple[Path, list[Path]]:
         grid = out["banana_grid.csv"]
         ax = axes[1]
 
-        # Reconstruct grid for imshow
+        # Reconstruct grid: R expand.grid(p1, p2) varies p1 first -> reshape (len_p2, len_p1)
         p1 = np.sort(grid["p1"].unique())
         p2 = np.sort(grid["p2"].unique())
-        fc = grid["fc"].to_numpy().reshape(len(p1), len(p2), order="C")
-        ax.imshow(fc.T, origin="lower", extent=(0, 1, 0, 1), cmap="Blues", aspect="auto")
-        ax.contour(p1, p2, fc.T, levels=10, colors="black", linewidths=0.5)
+        fc = grid["fc"].to_numpy().reshape(len(p2), len(p1), order="C")
+        ax.imshow(fc, origin="lower", extent=(0, 1, 0, 1), cmap="Blues", aspect="auto")
+        ax.contour(p1, p2, fc, levels=10, colors="black", linewidths=0.5)
         ax.scatter(D[:, 0], D[:, 1], s=60, color="blue")
         ax.set_xlabel(r"$\theta_1$", fontsize=14)
         ax.set_ylabel(r"$\theta_2$", fontsize=14)

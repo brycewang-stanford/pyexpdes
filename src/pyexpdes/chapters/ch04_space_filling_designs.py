@@ -692,11 +692,12 @@ def generate_figures(*, use_r: bool = True) -> tuple[Path, list[Path]]:
             (axes[1], med, "MED points with annealing", True),
         ]:
             # density image from grid
-            # grid is long-form; reconstruct for imshow
+            # grid is long-form from R expand.grid(p1, p2) which varies p1 first
+            # reshape to (len(p2), len(p1)) for correct imshow orientation
             p1 = np.sort(grid["p1"].unique())
             p2 = np.sort(grid["p2"].unique())
-            fc = grid["fc"].to_numpy().reshape(len(p1), len(p2), order="C")
-            ax.imshow(fc.T, origin="lower", extent=(0, 1, 0, 1), cmap=plt.cm.Blues, aspect="auto")
+            fc = grid["fc"].to_numpy().reshape(len(p2), len(p1), order="C")
+            ax.imshow(fc, origin="lower", extent=(0, 1, 0, 1), cmap=plt.cm.Blues, aspect="auto")
             if show_cand:
                 # show candidate points excluding initial ones (match ch4.R intent)
                 ax.scatter(cand[:, 0], cand[:, 1], s=10, color="blue", alpha=0.6)

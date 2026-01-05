@@ -16,9 +16,9 @@ pyexpdes/
 │   ├── core/           # paths, style, R wrapper utilities
 │   ├── chapters/       # ch01-ch11 modules
 │   └── r_wrappers/     # R scripts by chapter (ch01-ch11)
-├── notebooks/          # Jupyter notebooks (ch1-ch11)
+├── notebooks/          # Jupyter notebooks (ch01-ch11)
 ├── datasets/           # Data files
-├── figures/            # Generated figures
+├── figures/            # Generated figures (ch01-ch11)
 └── R/                  # Original R files (reference)
 ```
 
@@ -33,7 +33,7 @@ out_dir, fig_paths = generate_figures(use_r=True)
 Or run notebooks:
 
 ```bash
-jupyter lab notebooks/ch1.ipynb
+jupyter lab notebooks/ch01.ipynb
 ```
 
 ## Chapters
@@ -63,6 +63,7 @@ jupyter lab notebooks/ch1.ipynb
 **Core:** support, rkriging, AlgDesign
 
 **By chapter:**
+- Ch4: minimaxdesign, MaxPro, SFDesign, mined, maximin, SLHD, fitdistrplus, cubature, adaptMCMC
 - Ch5: SFDesign, spacefillr, mnormt, adaptMCMC
 - Ch6: sensitivity, MOFAT
 - Ch7: MaxPro, OSFD, FNN, pdist

@@ -4,7 +4,6 @@ Minimal R wrapper runner (CSV handoff).
 Policy:
 - Python owns plotting.
 - R is invoked only for book-faithful computations that are not practical to reproduce.
-- We *never* run the entire original R scripts from Python.
 """
 
 from __future__ import annotations

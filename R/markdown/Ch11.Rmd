@@ -110,14 +110,14 @@ for (i in 1:30) {
   sel <- (sel > 0)
 
   # Selected - Random Forest
-  a <- randomForest(x = train[, sel], y = train[, 9])
-  pred <- predict(a, test[, sel])
+  a <- randomForest(x = train[, -9][, sel], y = train[, 9])
+  pred <- predict(a, test[, -9][, sel])
   rmse.RF[i, 2] <- sqrt(mean((test$y - pred)^2))
 
   # Selected - Gaussian Process
-  a <- Fit.Kriging(X = train[, sel], y = train[, 9], interpolation = FALSE,
+  a <- Fit.Kriging(X = train[, -9][, sel], y = train[, 9], interpolation = FALSE,
                    kernel.parameters = list(type = "Gaussian"))
-  pred <- Predict.Kriging(a, test[, sel])$mean
+  pred <- Predict.Kriging(a, test[, -9][, sel])$mean
   rmse.GP[i, 2] <- sqrt(mean((test$y - pred)^2))
 }
 

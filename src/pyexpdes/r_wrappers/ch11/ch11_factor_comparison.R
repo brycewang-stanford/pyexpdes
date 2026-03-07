@@ -55,18 +55,18 @@ for (i in 1:n_rep) {
   sel <- (sel > 0)
 
   # Random Forest with selected factors
-  a <- randomForest(x = train[, sel], y = train[, 9])
-  pred <- predict(a, test[, sel])
+  a <- randomForest(x = train[, -9][, sel], y = train[, 9])
+  pred <- predict(a, test[, -9][, sel])
   rmse.RF[i, 2] <- sqrt(mean((test$y - pred)^2))
 
   # Gaussian Process with selected factors
   a <- Fit.Kriging(
-    X = as.matrix(train[, sel]),
+    X = as.matrix(train[, -9][, sel]),
     y = train[, 9],
     interpolation = FALSE,
     kernel.parameters = list(type = "Gaussian")
   )
-  pred <- Predict.Kriging(a, as.matrix(test[, sel]))$mean
+  pred <- Predict.Kriging(a, as.matrix(test[, -9][, sel]))$mean
   rmse.GP[i, 2] <- sqrt(mean((test$y - pred)^2))
 }
 

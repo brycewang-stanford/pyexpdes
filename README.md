@@ -18,8 +18,7 @@ pyexpdes/
 │   └── r_wrappers/     # R scripts by chapter (ch01-ch11)
 ├── notebooks/          # Jupyter notebooks (ch01-ch11)
 ├── datasets/           # Data files
-├── figures/            # Generated figures (ch01-ch11)
-└── R/                  # Original R files (reference)
+└── figures/            # Generated figures (ch01-ch11)
 ```
 
 ## Usage
@@ -71,6 +70,10 @@ jupyter lab notebooks/ch01.ipynb
 - Ch9: ICAOD, numDeriv
 - Ch10: SPlit, BalancedSampling, supercompress
 - Ch11: first, randomForest, twingp
+
+## Related
+
+- R implementation: [vroshanjoseph/rexpdes](https://github.com/vroshanjoseph/rexpdes)
 
 ## Notes
 

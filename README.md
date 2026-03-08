@@ -46,7 +46,7 @@ jupyter lab notebooks/ch01.ipynb
 | ch05_representative_points | Representative Points |
 | ch06_screening_designs | Screening Designs |
 | ch07_sequential_designs | Sequential Designs |
-| ch08_multilevel_mixture | Multi-level and Mixture Designs |
+| ch08_multilevel_mixture | Fractional Factorial Designs |
 | ch09_model_calibration | Model Calibration |
 | ch10_data_subsampling | Data Subsampling |
 | ch11_data_analysis | Data Analysis |
